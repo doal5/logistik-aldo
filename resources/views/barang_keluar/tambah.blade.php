@@ -36,16 +36,16 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="asal_barang" class="col-md-2 col-form-label">Asal Barang</label>
+                            <label for="asal_barang" class="col-md-2 col-form-label">Tujuan Barang</label>
                             <div class="col-md-10">
-                                <input type="text" id="asal_barang" class="form-control" name="asal_barang"
-                                    placeholder="Masukkan asal barang">
+                                <input type="text" id="tujuan_barang" class="form-control" name="tujuan_barang"
+                                    placeholder="Masukkan tujuan barang">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="tanggal_masuk" class="col-md-2 col-form-label">Tanggal Masuk</label>
+                            <label for="tanggal_keluar" class="col-md-2 col-form-label">Tanggal Keluar</label>
                             <div class="col-md-10">
-                                <input type="date" id="tanggal_masuk" class="form-control" name="tanggal_masuk">
+                                <input type="date" id="tanggal_keluar" class="form-control" name="tanggal_keluar">
                             </div>
                         </div>
                         <input type="hidden" name="status" value="masuk">

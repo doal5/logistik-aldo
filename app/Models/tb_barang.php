@@ -15,9 +15,13 @@ class tb_barang extends Model
         'stok'
     ];
 
-    public function tb_barang_proses()
+    public function tb_barang_masuk()
     {
         return $this->hasMany(tb_barang_masuk::class, 'no_kode_barang', 'id');
+    }
+    public function tb_barang_keluar()
+    {
+        return $this->hasMany(tb_barang_keluar::class, 'no_kode_barang', 'id');
     }
     use HasFactory;
 }

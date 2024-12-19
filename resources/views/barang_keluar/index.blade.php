@@ -15,9 +15,16 @@
                         </div>
                     @endif
 
+                    @if (session('gagal'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('gagal') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
                     <div class="table-responsive">
                         <div class="btn-group">
-                            <a href="{{ route('barang_masuk_tambah') }}">
+                            <a href="{{ route('barang_keluar_tambah') }}">
                                 <button class="btn btn-primary btn-sm"><i class="fa fa-plus"> </i>
                                     Tambah</button>
                             </a>
@@ -30,7 +37,7 @@
                                     <th>No Barang Masuk</th>
                                     <th>Kode Barang</th>
                                     <th>Quantity</th>
-                                    <th>Origin Asal Barang</th>
+                                    <th>Destination Tujuan Barang</th>
                                     <th>Tanggal Masuk</th>
                                 </tr>
                             </thead>
@@ -41,12 +48,15 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->tb_barang->kode_barang }}</td>
                                         <td>{{ $item->quantity }}</td>
-                                        <td>{{ $item->asal_barang }}</td>
+                                        <td>{{ $item->tujuan_barang }}</td>
                                         <td>{{ Carbon\Carbon::parse($item->tanggal_masuk)->format('d-F-Y') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <!-- Menampilkan pagination -->
+                        {{ $barangProses->links() }}
                     </div>
                 </div>
             </div>

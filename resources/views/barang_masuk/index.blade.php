@@ -47,6 +47,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <!-- Menampilkan pagination -->
+                        {{ $barangProses->links() }}
                     </div>
                 </div>
             </div>

@@ -22,8 +22,13 @@
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
-                        <a href="{{ route('barang_masuk') }}"
+                        <a href="{{ route('barang') }}"
                             class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}"><i
+                                class="fa-solid fa-box me-2"></i>Barang</a>
+                    </div>
+                    <div class="navbar-nav w-100">
+                        <a href="{{ route('barang_masuk') }}"
+                            class="nav-item nav-link {{ request()->is('barangMasuk') ? 'active' : '' }}"><i
                                 class="fa fa-tachometer-alt me-2"></i>Barang Masuk <i class="fa fa-arrow-left"></i></a>
                     </div>
                     <div class="navbar-nav w-100">
@@ -31,11 +36,6 @@
                             class="nav-item nav-link {{ request()->is('barangKeluar') ? 'active' : '' }}"><i
                                 class="fa fa-tachometer-alt me-2"></i>Barang Keluar <i
                                 class="fa fa-arrow-right"></i></a>
-                    </div>
-                    <div class="navbar-nav w-100">
-                        <a href="{{ route('barang') }}"
-                            class="nav-item nav-link {{ request()->is('barang') ? 'active' : '' }}"><i
-                                class="fa-solid fa-box me-2"></i>Barang</a>
                     </div>
                 </nav>
             </div>

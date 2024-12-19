@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\tb_barang;
+use App\Models\tb_barang_keluar;
 use App\Models\tb_barang_masuk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -15,7 +16,7 @@ class BarangprosesController extends Controller
     public function index()
     {
         $data = [
-            'barangProses' => tb_barang_masuk::where('status', 'masuk')->paginate(10)
+            'barangProses' => tb_barang_masuk::paginate(10)
         ];
         return view('barang_masuk.index', $data);
     }
@@ -23,7 +24,7 @@ class BarangprosesController extends Controller
     public function indexKeluar()
     {
         $data = [
-            'barangProses' => tb_barang_masuk::where('status', 'keluar')->paginate(10)
+            'barangProses' => tb_barang_keluar::paginate(10)
         ];
 
         return view('barang_keluar.index', $data);
@@ -64,6 +65,40 @@ class BarangprosesController extends Controller
         return redirect()->route('barang_masuk');
     }
 
+    public function createKeluar()
+    {
+        $data = [
+            'barang' => tb_barang::all()
+        ];
+        return view('barang_keluar.tambah', $data);
+    }
+
+    public function storeKeluar(Request $request)
+    {
+
+        // validasi tiap form
+        $validator = Validator::make($request->all(), [
+            'nama_barang' => 'required',
+            'quantity' => 'required|integer',
+            'tujuan_barang' => 'required',
+            'tanggal_keluar' => 'required',
+        ]);
+
+        $validatedData = $validator->validated();
+
+        // Simpan barang keluar dan tangani jika gagal
+        $barang_keluar = tb_barang_keluar::simpanBarangKeluar($validatedData);
+
+        if ($barang_keluar) {
+            // Set session flash untuk pesan sukses
+            session()->flash('sukses', 'Data keluar barang berhasil disimpan!');
+        } else {
+            // Set session flash untuk pesan gagal
+            session()->flash('gagal', 'Data keluar barang gagal disimpan karena stok tidak mencukupi!');
+        }
+
+        return redirect()->route('barang_keluar');
+    }
     /**
      * Display the specified resource.
      */

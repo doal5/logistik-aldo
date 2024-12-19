@@ -16,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', [BarangController::class, 'index'])->name('barang');
 
-Route::get('/', [BarangprosesController::class, 'index'])->name('barang_masuk');
+// route barang masuk
+Route::get('barangMasuk', [BarangprosesController::class, 'index'])->name('barang_masuk');
 Route::get('barangMasukTambah', [BarangprosesController::class, 'create'])->name('barang_masuk_tambah');
 Route::post('storeBarangMasuk', [BarangprosesController::class, 'storeMasuk'])->name('store_masuk');
+
+// route barang keluar
 Route::get('barangKeluar', [BarangprosesController::class, 'indexKeluar'])->name('barang_keluar');
-Route::get('barang', [BarangController::class, 'index'])->name('barang');
+Route::get('barangKeluarTambah', [BarangprosesController::class, 'createKeluar'])->name('barang_keluar_tambah');
+Route::post('storeBarangKeluar', [BarangprosesController::class, 'storeKeluar'])->name('store_keluar');
