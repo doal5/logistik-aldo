@@ -5,17 +5,19 @@
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-12">
-                <h5 class="mb-4">Barang</h5>
+                <h5 class="mb-4">Barang Masuk</h5>
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Data Barang</h6>
+                    <h6 class="mb-4">Data Barang Masuk</h6>
                     @if (session('sukses'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('sukses') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
+
                     <div class="table-responsive">
                         <div class="btn-group">
-                            <a href="">
+                            <a href="{{ route('barang_masuk_tambah') }}">
                                 <button class="btn btn-primary btn-sm"><i class="fa fa-plus"> </i>
                                     Tambah</button>
                             </a>
@@ -29,25 +31,18 @@
                                     <th>Kode Barang</th>
                                     <th>Quantity</th>
                                     <th>Origin Asal Barang</th>
-                                    <th>Quantity</th>
                                     <th>Tanggal Masuk</th>
-                                    <th style="width: 10%"><i class="fa fa-cog"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($barangProses as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->kode_barang }}</td>
-                                        <td>{{ $item->nama_barang }}</td>
-                                        <td>{{ $item->stok }}</td>
-
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-primary btn-sm"><i class="fa fa-eye"></i>
-                                                    detail</button>
-                                            </div>
-                                        </td>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->tb_barang->kode_barang }}</td>
+                                        <td>{{ $item->quantity }}</td>
+                                        <td>{{ $item->asal_barang }}</td>
+                                        <td>{{ Carbon\Carbon::parse($item->tanggal_masuk)->format('d-F-Y') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

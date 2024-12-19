@@ -22,10 +22,15 @@
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
-                        <a href="{{ route('barang_keluar_masuk') }}"
+                        <a href="{{ route('barang_masuk') }}"
                             class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}"><i
-                                class="fa fa-tachometer-alt me-2"></i>Barang
-                            Keluar Masuk</a>
+                                class="fa fa-tachometer-alt me-2"></i>Barang Masuk <i class="fa fa-arrow-left"></i></a>
+                    </div>
+                    <div class="navbar-nav w-100">
+                        <a href="{{ route('barang_keluar') }}"
+                            class="nav-item nav-link {{ request()->is('barangKeluar') ? 'active' : '' }}"><i
+                                class="fa fa-tachometer-alt me-2"></i>Barang Keluar <i
+                                class="fa fa-arrow-right"></i></a>
                     </div>
                     <div class="navbar-nav w-100">
                         <a href="{{ route('barang') }}"
