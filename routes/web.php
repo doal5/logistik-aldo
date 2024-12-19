@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [BarangController::class, 'index'])->name('barang');
+Route::get('barangTambah', [BarangController::class, 'create'])->name('barang_create');
+Route::post('barangStore', [BarangController::class, 'store'])->name('store_barang');
 
 // route barang masuk
 Route::get('barangMasuk', [BarangprosesController::class, 'index'])->name('barang_masuk');

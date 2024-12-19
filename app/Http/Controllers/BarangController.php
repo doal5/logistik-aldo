@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\tb_barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BarangController extends Controller
 {
@@ -13,7 +14,7 @@ class BarangController extends Controller
     public function index()
     {
         $data = [
-            'barang' => tb_barang::paginate(10)
+            'barang' => tb_barang::latest()->paginate(10)
         ];
         return view('barang.index', $data);
     }
@@ -23,7 +24,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view ('')
+        return view('barang.tambah');
     }
 
     /**
@@ -31,7 +32,21 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi form
+        $validator = Validator::make($request->all(), [
+            'nama_barang' => 'required|string|max:255',
+        ]);
+
+        $validatedData = $validator->validated();
+
+        // Menyimpan data barang dengan stok default 0
+        $simpan = tb_barang::simpanBarang($validatedData);
+
+        // Set session flash untuk pesan sukses
+        session()->flash('sukses', 'Data barang berhasil disimpan!');
+
+        // Mengalihkan kembali ke halaman barang
+        return redirect()->route('barang');
     }
 
     /**

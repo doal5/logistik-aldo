@@ -23,7 +23,7 @@
                     </div>
                     <div class="navbar-nav w-100">
                         <a href="{{ route('barang') }}"
-                            class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}"><i
+                            class="nav-item nav-link {{ request()->is('/') || request()->is('barangTambah') ? 'active' : '' }}"><i
                                 class="fa-solid fa-box me-2"></i>Barang</a>
                     </div>
                     <div class="navbar-nav w-100">

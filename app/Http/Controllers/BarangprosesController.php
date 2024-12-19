@@ -16,7 +16,7 @@ class BarangprosesController extends Controller
     public function index()
     {
         $data = [
-            'barangProses' => tb_barang_masuk::paginate(10)
+            'barangProses' => tb_barang_masuk::latest()->paginate(10)
         ];
         return view('barang_masuk.index', $data);
     }
@@ -24,7 +24,7 @@ class BarangprosesController extends Controller
     public function indexKeluar()
     {
         $data = [
-            'barangProses' => tb_barang_keluar::paginate(10)
+            'barangProses' => tb_barang_keluar::latest()->paginate(10)
         ];
 
         return view('barang_keluar.index', $data);

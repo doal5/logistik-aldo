@@ -9,13 +9,14 @@
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Data Barang</h6>
                     @if (session('sukses'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('sukses') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
                     <div class="table-responsive">
                         <div class="btn-group">
-                            <a href="">
+                            <a href="{{ route('barang_create') }}">
                                 <button class="btn btn-primary btn-sm"><i class="fa fa-plus"> </i>
                                     Tambah</button>
                             </a>
@@ -28,7 +29,6 @@
                                     <th>kode barang</th>
                                     <th>nama barang</th>
                                     <th>stok</th>
-                                    <th style="width: 20%"><i class="fa fa-cog"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,12 +39,6 @@
                                         <td>{{ $item->nama_barang }}</td>
                                         <td>{{ $item->stok }}</td>
 
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-primary btn-sm"><i class="fa fa-eye"></i>
-                                                    detail</button>
-                                            </div>
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
