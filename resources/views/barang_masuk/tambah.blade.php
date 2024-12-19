@@ -59,20 +59,3 @@
         </div>
     </div>
 @endsection
-
-@push('script')
-    <script>
-        $('#table-barang').DataTable({
-            "paging": false,
-            "searching": true,
-            "ordering": true,
-            "info": false,
-            "lengthChange": true,
-            "language": {
-                "search": "Cari:",
-                "zeroRecords": "Data tidak ditemukan",
-                "infoEmpty": "Tidak ada data yang tersedia",
-            }
-        });
-    </script>
-@endpush
